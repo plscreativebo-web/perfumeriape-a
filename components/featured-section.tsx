@@ -42,7 +42,7 @@ const featuredProducts: Product[] = [
     name: "QAHWA",
     category: "Khamrah",
     concentration: "Eau de Parfum",
-    price: 60,
+    price: 65,
     description:
       "Una fragancia cálida y elegante, donde un ramo de rosas premium se fusiona con la suavidad de la peonía y el toque floral del jazmín. Su fondo de sándalo aporta un carácter cremoso y sofisticado, creando un aroma refinado y encantador.",
     notes: ["CAFÉ", "CANELA", "VAINILLA", "JENGIBRE"],
@@ -53,7 +53,7 @@ const featuredProducts: Product[] = [
     name: "CLUB DE NUIT",
     category: "Armaf",
     concentration: "Eau de Parfum",
-    price: 65,
+    price: 60,
     description:
       "Una fragancia nocturna intensa y elegante que combina el calor del ámbar con un toque especiado envolvente. Su aroma evoluciona hacia acordes dulces y cremosos de vainilla, reforzados por un fondo de almizceles suaves que aportan profundidad y sensualidad. Perfecta para quienes buscan una presencia marcada, seductora y sofisticada en la noche.",
     notes: ["LIMON", "MANZANA", "PIÑA", "VAINILLA"],
