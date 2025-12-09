@@ -10,7 +10,7 @@ interface Product {
   name: string
   category: string
   concentration: string
-  price: number
+  prices: { size: string; price: number }[]
   description: string
   notes: string[]
   image?: string
@@ -22,7 +22,10 @@ const catalogProducts: Product[] = [
     name: "LE MALE ELIXIR",
     category: "Jean Paul Gaultier",
     concentration: "Eau de Parfum",
-    price: 110,
+    prices: [
+      { size: "5ml", price: 100 },
+      { size: "10ml", price: 200 },
+    ],
     description: "Una composición misteriosa y profunda con notas de oud noble.",
     notes: ["Oud", "Ámbar", "Vainilla", "Almizcares"],
     image: "/images/image.png",
@@ -32,7 +35,10 @@ const catalogProducts: Product[] = [
     name: "EROS",
     category: "Versace",
     concentration: "Eau de Toilette",
-    price: 70,
+    prices: [
+      { size: "5ml", price: 70 },
+      { size: "10ml", price: 130 },
+    ],
     description: "Frescura radiante con cítricos exóticos y notas verdes.",
     notes: ["Bergamota", "Lima", "Menta", "Vetiver"],
     image: "/images/versace-eros.png",
@@ -42,7 +48,10 @@ const catalogProducts: Product[] = [
     name: "QAHWA",
     category: "Khamrah",
     concentration: "Eau de Parfum",
-    price: 65,
+    prices: [
+      { size: "5ml", price: 60 },
+      { size: "10ml", price: 110 },
+    ],
     description: "Un ramo de rosas premium con toques de peonía y jazmín.",
     notes: ["Rosa", "Peonía", "Jazmín", "Sándalo"],
     image: "/images/khamrah-qahwa.png",
@@ -52,10 +61,27 @@ const catalogProducts: Product[] = [
     name: "CLUB DE NUIT",
     category: "Armaf",
     concentration: "Eau de Parfum",
-    price: 60,
+    prices: [
+      { size: "5ml", price: 50 },
+      { size: "10ml", price: 100 },
+    ],
     description: "Una fragancia nocturna sofisticada con notas cálidas y especiadas.",
     notes: ["Ámbar", "Especias", "Almizcares", "Vainilla"],
     image: "/images/club-de-nuit.png",
+  },
+  {
+    id: 5,
+    name: "FOR HIM",
+    category: "HAWAS",
+    concentration: "Eau de Parfum",
+    prices: [
+      { size: "5ml", price: 50 },
+      { size: "10ml", price: 100 },
+    ],
+    description:
+      "Una fragancia fresca, masculina y adictiva que combina el toque chispeante de la manzana y los cítricos con un corazón acuático lleno de energía. Su mezcla de notas marinas, ciruela y cardamomo aporta un carácter moderno y dinámico, mientras que el fondo de ámbar gris, almizcle y maderas ambaradas deja una estela cálida, limpia y seductora. Ideal para el día a día, climas cálidos y hombres que buscan frescura con personalidad.",
+    notes: ["MANZANA", "LIMÓN", "CANELA", "BERGAMOTA"],
+    image: "/images/Hawas-for-Him-Rasasi.png",
   },
 ]
 
@@ -63,6 +89,7 @@ export default function CatalogPage() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
   const [scrolled, setScrolled] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +118,10 @@ export default function CatalogPage() {
                 className="group relative cursor-pointer"
                 onMouseEnter={() => setHoveredId(product.id)}
                 onMouseLeave={() => setHoveredId(null)}
-                onClick={() => setSelectedProduct(product)}
+                onClick={() => {
+                  setSelectedProduct(product)
+                  setSelectedSize(null)
+                }}
               >
                 <div
                   className="bg-card rounded-xl overflow-hidden border border-border/30 transition-all duration-500 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-900/20"
@@ -144,13 +174,13 @@ export default function CatalogPage() {
                       ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-border/30">
-                      <span className="text-2xl font-serif font-bold text-red-500">Bs.{product.price}</span>
+                    <div className="flex items-center justify-end pt-4 border-t border-border/30">
                       <button
                         className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all text-sm font-medium hover:shadow-lg"
                         onClick={(e) => {
                           e.stopPropagation()
                           setSelectedProduct(product)
+                          setSelectedSize(null)
                         }}
                       >
                         Pedir
@@ -235,8 +265,32 @@ export default function CatalogPage() {
                 </div>
               </div>
 
+              <div className="space-y-3 pt-6 border-t border-border/30">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Tamaño</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedProduct.prices.map((priceOption) => (
+                    <button
+                      key={priceOption.size}
+                      onClick={() => setSelectedSize(priceOption.size)}
+                      className={`p-4 rounded-lg border-2 transition-all font-semibold ${
+                        selectedSize === priceOption.size
+                          ? "border-red-500 bg-red-900/30 text-red-300"
+                          : "border-border/30 hover:border-red-500/50"
+                      }`}
+                    >
+                      <div className="text-base">{priceOption.size}</div>
+                      <div className="text-sm text-red-500">Bs.{priceOption.price}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex items-center justify-between pt-6 border-t border-border/30">
-                <span className="text-3xl font-serif font-bold text-red-500">Bs.{selectedProduct.price}</span>
+                {selectedSize && (
+                  <span className="text-3xl font-serif font-bold text-red-500">
+                    Bs.{selectedProduct.prices.find((p) => p.size === selectedSize)?.price}
+                  </span>
+                )}
                 <a
                   href="https://api.whatsapp.com/send?phone=59160967218"
                   target="_blank"

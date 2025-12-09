@@ -58,12 +58,7 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() => router.push("/catalog")}
-              className="px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:shadow-xl hover:shadow-primary/20 font-medium"
-            >
-              Explorar Colección
-            </button>
+            {/* Removed "Explorar Colección" button */}
             <button
               onClick={() => router.push("/catalog")}
               className="px-8 py-3 rounded-lg border border-primary text-primary hover:bg-primary/10 transition-all font-medium"

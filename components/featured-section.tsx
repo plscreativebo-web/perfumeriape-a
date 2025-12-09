@@ -8,7 +8,7 @@ interface Product {
   name: string
   category: string
   concentration: string
-  price: number
+  prices: { size: string; price: number }[]
   description: string
   notes: string[]
   image?: string
@@ -20,7 +20,10 @@ const featuredProducts: Product[] = [
     name: "LE MALE ELIXIR",
     category: "Jean Paul Gaultier",
     concentration: "Eau de Parfum",
-    price: 110,
+    prices: [
+      { size: "5ml", price: 100 },
+      { size: "10ml", price: 200 },
+    ],
     description:
       "Una fragancia intensa y cautivadora que combina la profundidad del oud con la calidez del ámbar y la dulzura envolvente de la vainilla. Su aroma misterioso envuelve con una sensualidad oscura y elegante, perfecta para quienes buscan dejar una impresión inolvidable.",
     notes: ["LAVANDA", "MENTA", "MIEL", "VAINILLA"],
@@ -31,7 +34,10 @@ const featuredProducts: Product[] = [
     name: "EROS",
     category: "Versace",
     concentration: "Eau de Toilette",
-    price: 70,
+    prices: [
+      { size: "5ml", price: 70 },
+      { size: "10ml", price: 130 },
+    ],
     description:
       "Una explosión fresca y vibrante que mezcla cítricos chispeantes con toques aromáticos y un fondo ligeramente dulce. Eros transmite energía juvenil y confianza, ideal para quienes buscan un aroma que llame la atención desde el primer instante.",
     notes: ["MENTA", "MANZANA VERDE", "LIMON", "VAINILLA"],
@@ -42,7 +48,10 @@ const featuredProducts: Product[] = [
     name: "QAHWA",
     category: "Khamrah",
     concentration: "Eau de Parfum",
-    price: 65,
+    prices: [
+      { size: "5ml", price: 60 },
+      { size: "10ml", price: 110 },
+    ],
     description:
       "Una fragancia cálida y elegante, donde un ramo de rosas premium se fusiona con la suavidad de la peonía y el toque floral del jazmín. Su fondo de sándalo aporta un carácter cremoso y sofisticado, creando un aroma refinado y encantador.",
     notes: ["CAFÉ", "CANELA", "VAINILLA", "JENGIBRE"],
@@ -53,17 +62,35 @@ const featuredProducts: Product[] = [
     name: "CLUB DE NUIT",
     category: "Armaf",
     concentration: "Eau de Parfum",
-    price: 60,
+    prices: [
+      { size: "5ml", price: 50 },
+      { size: "10ml", price: 100 },
+    ],
     description:
       "Una fragancia nocturna intensa y elegante que combina el calor del ámbar con un toque especiado envolvente. Su aroma evoluciona hacia acordes dulces y cremosos de vainilla, reforzados por un fondo de almizceles suaves que aportan profundidad y sensualidad. Perfecta para quienes buscan una presencia marcada, seductora y sofisticada en la noche.",
     notes: ["LIMON", "MANZANA", "PIÑA", "VAINILLA"],
     image: "/images/club-de-nuit.png",
+  },
+  {
+    id: 5,
+    name: "FOR HIM",
+    category: "HAWAS",
+    concentration: "Eau de Parfum",
+    prices: [
+      { size: "5ml", price: 50 },
+      { size: "10ml", price: 100 },
+    ],
+    description:
+      "Una fragancia fresca, masculina y adictiva que combina el toque chispeante de la manzana y los cítricos con un corazón acuático lleno de energía. Su mezcla de notas marinas, ciruela y cardamomo aporta un carácter moderno y dinámico, mientras que el fondo de ámbar gris, almizcle y maderas ambaradas deja una estela cálida, limpia y seductora. Ideal para el día a día, climas cálidos y hombres que buscan frescura con personalidad.",
+    notes: ["MANZANA", "LIMÓN", "CANELA", "BERGAMOTA"],
+    image: "/images/Hawas-for-Him-Rasasi.png",
   },
 ]
 
 export default function FeaturedSection() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
 
   return (
     <section id="featured" className="py-24 relative overflow-hidden">
@@ -80,7 +107,10 @@ export default function FeaturedSection() {
               className="group relative cursor-pointer"
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => {
+                setSelectedProduct(product)
+                setSelectedSize(null)
+              }}
             >
               <div
                 className="bg-card rounded-xl overflow-hidden border border-border/30 transition-all duration-500 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-900/20"
@@ -130,13 +160,13 @@ export default function FeaturedSection() {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-border/30">
-                    <span className="text-2xl font-serif font-bold text-red-500">Bs.{product.price}</span>
+                  <div className="flex items-center justify-end pt-4 border-t border-border/30">
                     <button
                       className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-all text-sm font-medium hover:shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation()
                         setSelectedProduct(product)
+                        setSelectedSize(null)
                       }}
                     >
                       Pedir
@@ -220,8 +250,32 @@ export default function FeaturedSection() {
                 </div>
               </div>
 
+              <div className="space-y-3 pt-6 border-t border-border/30">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Tamaño</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {selectedProduct.prices.map((priceOption) => (
+                    <button
+                      key={priceOption.size}
+                      onClick={() => setSelectedSize(priceOption.size)}
+                      className={`p-4 rounded-lg border-2 transition-all font-semibold ${
+                        selectedSize === priceOption.size
+                          ? "border-red-500 bg-red-900/30 text-red-300"
+                          : "border-border/30 hover:border-red-500/50"
+                      }`}
+                    >
+                      <div className="text-base">{priceOption.size}</div>
+                      <div className="text-sm text-red-500">Bs.{priceOption.price}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
               <div className="flex items-center justify-between pt-6 border-t border-border/30">
-                <span className="text-3xl font-serif font-bold text-red-500">Bs.{selectedProduct.price}</span>
+                {selectedSize && (
+                  <span className="text-3xl font-serif font-bold text-red-500">
+                    Bs.{selectedProduct.prices.find((p) => p.size === selectedSize)?.price}
+                  </span>
+                )}
                 <a
                   href="https://api.whatsapp.com/send?phone=59160967218"
                   target="_blank"
