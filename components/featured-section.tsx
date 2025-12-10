@@ -31,17 +31,17 @@ const featuredProducts: Product[] = [
   },
   {
     id: 2,
-    name: "EROS",
-    category: "Versace",
+    name: "MANDARIN SKY",
+    category: "ARMAF ODYSSEY",
     concentration: "Eau de Toilette",
     prices: [
-      { size: "5ml", price: 70 },
-      { size: "10ml", price: 130 },
+      { size: "5ml", price: 50 },
+      { size: "10ml", price: 100 },
     ],
     description:
-      "Una explosión fresca y vibrante que mezcla cítricos chispeantes con toques aromáticos y un fondo ligeramente dulce. Eros transmite energía juvenil y confianza, ideal para quienes buscan un aroma que llame la atención desde el primer instante.",
-    notes: ["MENTA", "MANZANA VERDE", "LIMON", "VAINILLA"],
-    image: "/images/versace-eros.png",
+      "Armaf Odyssey Mandarin Sky es una fragancia moderna y vibrante que combina la frescura chispeante de los cítricos con el dulzor cálido y seductor del caramelo y la haba tonka, culminando en una base amaderada y elegante.",
+    notes: ["MANDARINA", "NARANJA", "CARAMELO", "HABA TONKA"],
+    image: "/images/Armaf.png",
   },
   {
     id: 3,
@@ -59,17 +59,17 @@ const featuredProducts: Product[] = [
   },
   {
     id: 4,
-    name: "CLUB DE NUIT",
-    category: "Armaf",
+    name: "YARA CANDY",
+    category: "LATTAFA",
     concentration: "Eau de Parfum",
     prices: [
       { size: "5ml", price: 50 },
       { size: "10ml", price: 100 },
     ],
     description:
-      "Una fragancia nocturna intensa y elegante que combina el calor del ámbar con un toque especiado envolvente. Su aroma evoluciona hacia acordes dulces y cremosos de vainilla, reforzados por un fondo de almizceles suaves que aportan profundidad y sensualidad. Perfecta para quienes buscan una presencia marcada, seductora y sofisticada en la noche.",
-    notes: ["LIMON", "MANZANA", "PIÑA", "VAINILLA"],
-    image: "/images/club-de-nuit.png",
+      "Lattafa Yara Candy es una fragancia femenina alegre, dulce y juvenil que evoca una explosión de golosinas y frescura desde el primer instante. Su apertura chispeante de mandarina verde y grosella negra aporta vitalidad y un toque frutal refrescante. Luego, emerge un corazón juguetón y encantador con la sensación de “caramelo de fresa” y notas florales suaves de gardenia, que recuerdan a dulces golosinas con un aire refinado. Finalmente, en su secado, la combinación de sándalo, vainilla, almizcle y ámbar deja una estela cálida, dulce-cremosa y envolvente, ideal para quienes buscan un perfume dulce, llamativo y femenino.",
+    notes: ["MANDARINA VERDE", "GROSELLA NEGRA", "Strawberry", "VAINILLA"],
+    image: "/images/Yara.png",
   },
   {
     id: 5,
