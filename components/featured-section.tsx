@@ -68,7 +68,7 @@ const featuredProducts: Product[] = [
     ],
     description:
       "Lattafa Yara Candy es una fragancia femenina alegre, dulce y juvenil que evoca una explosión de golosinas y frescura desde el primer instante. Su apertura chispeante de mandarina verde y grosella negra aporta vitalidad y un toque frutal refrescante. Luego, emerge un corazón juguetón y encantador con la sensación de “caramelo de fresa” y notas florales suaves de gardenia, que recuerdan a dulces golosinas con un aire refinado. Finalmente, en su secado, la combinación de sándalo, vainilla, almizcle y ámbar deja una estela cálida, dulce-cremosa y envolvente, ideal para quienes buscan un perfume dulce, llamativo y femenino.",
-    notes: ["MANDARINA VERDE", "GROSELLA NEGRA", "Strawberry", "VAINILLA"],
+    notes: ["MANDARINA VERDE", "GROSELLA NEGRA", "STRAWBERRY", "VAINILLA"],
     image: "/images/Yara.png",
   },
   {
