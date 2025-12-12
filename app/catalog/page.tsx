@@ -27,7 +27,7 @@ const catalogProducts: Product[] = [
       { size: "10ml", price: 200 },
     ],
     description: "Una composición misteriosa y profunda con notas de oud noble.",
-    notes: ["Oud", "Ámbar", "Vainilla", "Almizcares"],
+    notes: ["LAVANDA", "MENTA", "MIEL", "VAINILLA"],
     image: "/images/image.png",
   },
   {
@@ -53,7 +53,7 @@ const catalogProducts: Product[] = [
       { size: "10ml", price: 110 },
     ],
     description: "Un ramo de rosas premium con toques de peonía y jazmín.",
-    notes: ["Rosa", "Peonía", "Jazmín", "Sándalo"],
+    notes: ["CAFÉ", "CANELA", "VAINILLA", "JENGIBRE"],
     image: "/images/khamrah-qahwa.png",
   },
   {
@@ -66,7 +66,7 @@ const catalogProducts: Product[] = [
       { size: "10ml", price: 100 },
     ],
     description: "Lattafa Yara Candy es una fragancia femenina alegre, dulce y juvenil que evoca una explosión de golosinas y frescura desde el primer instante. Su apertura chispeante de mandarina verde y grosella negra aporta vitalidad y un toque frutal refrescante. Luego, emerge un corazón juguetón y encantador con la sensación de “caramelo de fresa” y notas florales suaves de gardenia, que recuerdan a dulces golosinas con un aire refinado. Finalmente, en su secado, la combinación de sándalo, vainilla, almizcle y ámbar deja una estela cálida, dulce-cremosa y envolvente, ideal para quienes buscan un perfume dulce, llamativo y femenino.",
-    notes: ["MANDARINA VERDE", "GROSELLA NEGRA", "Strawberry", "Vainilla"],
+    notes: ["MANDARINA VERDE", "GROSELLA NEGRA", "STRAWBERRY", "VAINILLA"],
     image: "/images/Yara.png",
   },
   {
