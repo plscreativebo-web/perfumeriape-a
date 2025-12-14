@@ -83,7 +83,22 @@ const catalogProducts: Product[] = [
     notes: ["MANZANA", "LIMÓN", "CANELA", "BERGAMOTA"],
     image: "/images/Hawas-for-Him-Rasasi.png",
   },
+    {
+    id: 6,
+    name: "BORN IN ROMA",
+    category: "VALENTINO",
+    concentration: "Eau de Parfum",
+    prices: [
+      { size: "5ml", price: 140 },
+      { size: "10ml", price: 270 },
+    ],
+    description:
+      "Una interpretación moderna y sofisticada del espíritu romano, Born in Roma Intense combina sensualidad y energía en una fragancia cautivadora. Desde su apertura cálida y envolvente, dominada por la vainilla bourbon, evoluciona hacia un corazón aromático con un toque fresco y floral, y culmina en una base elegante y amaderada que deja una estela profunda. Este perfume celebra la dualidad entre tradición y modernidad, ideal para el hombre que quiere destacar con confianza tanto de día como de noche.",
+    notes: ["VEITEVER", "LAVANDA", "BERGAMOTA", "VAINILLA"],
+    image: "/images/Valentino.png",
+  },
 ]
+
 
 export default function CatalogPage() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
